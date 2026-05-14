@@ -1,0 +1,43 @@
+{
+    "build": {
+        "builder": "dockerfile"
+    },
+    "deploy": {
+        "numReplicas": 1,
+        "sleepApplication": false,
+        "restartPolicyType": "ON_FAILURE"
+    },
+    "variables": {
+        "SETUP_PASSWORD": {
+            "description": "Setup password that will protect your clawdbot UI from the rest of the world",
+            "required": true
+        },
+        "CLAWDBOT_STATE_DIR": {
+            "defaultValue": "/data/.clawdbot",
+            "description": "where your clawdbot data lives - configs, auth, sessions.",
+            "required": true
+        },
+        "OPENCLAW_STATE_DIR": {
+            "defaultValue": "/data/.openclaw",
+            "required": true
+        },
+        "CLAWDBOT_GATEWAY_TOKEN": {
+            "defaultValue": "${{secret(64, \"abcdef0123456789\")}}",
+            "description": "token that protects your gateway",
+            "required": true
+        },
+        "CLAWDBOT_WORKSPACE_DIR": {
+            "defaultValue": "/data/workspace",
+            "description": "Where all the files you create via clawdbot will reside.",
+            "required": true
+        },
+        "OPENCLAW_GATEWAY_TOKEN": {
+            "defaultValue": "${{secret(64, \"abcdef0123456789\")}}",
+            "required": true
+        },
+        "OPENCLAW_WORKSPACE_DIR": {
+            "defaultValue": "/data/workspace",
+            "required": true
+        }
+    }
+}
